@@ -6,8 +6,8 @@
 
     <data>
         <variable
-            name="dataModel"
-            type="com.example.bindingadaptersampleapp.DataModel" />
+            name="viewModel"
+            type="com.example.bindingadaptersampleapp.MyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,9 +19,7 @@
             android:id="@+id/iv_demo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            loadImageFromUrl="@{dataModel.profilePhoto}"
-            displayTitle="@{dataModel.title}"
-            setVisibility="@{dataModel.points}"
+            loadImageFromUrl="@{viewModel.myData.profilePhoto}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,11 +31,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="TextView"
-            setVisibility="@{5}"
+            android:text="@{viewModel.myData.title}"
             app:layout_constraintEnd_toEndOf="@+id/iv_demo"
             app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toStartOf="@+id/iv_demo"
             app:layout_constraintTop_toBottomOf="@+id/iv_demo" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@string/change_text"
+            android:onClick="@{() -> viewModel.updateData()}"
+            app:layout_constraintEnd_toEndOf="@+id/iv_demo"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="@+id/iv_demo"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

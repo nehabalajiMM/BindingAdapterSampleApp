@@ -2,6 +2,7 @@ package com.example.bindingadaptersampleapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.bindingadaptersampleapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,13 +14,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val data = DataModel(
-            "Test Title",
-            "Test description",
-            "https://picsum.photos/id/237/400",
-            12
-        )
-
-        binding.dataModel = data
+        val viewModel = ViewModelProvider(this)[MyViewModel::class.java]
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
     }
 }
